@@ -108,6 +108,23 @@ SIMULATE_WAITING_HUMAN_BEING=10
    ```bash
    uvicorn app.main:app --reload
    ```
+   
+---
+
+## Running with Docker
+This project can also be built and run using Docker.
+
+### Steps to Execute with Docker
+1. Build the Docker image:
+   ```bash
+   docker build -t livescore-api .
+   ```
+2. Run the Docker container:
+   ```bash
+   docker run -p 8000:8000 livescore-api
+   ```
+
+The application will be available at `http://localhost:8000`.
 
 ---
 
@@ -137,4 +154,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Disclaimer
 This project is for educational purposes only. Unauthorized scraping may result in legal action. Use responsibly and at your own risk.
-
