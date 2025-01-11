@@ -11,9 +11,10 @@ from app.services.utils import get_match_datetime
 import os
 from dotenv import load_dotenv
 
+from config import LIMIT
+
 load_dotenv()
 
-LIMIT = int(os.getenv("LIMIT"))
 XPATH_TABS_MENU = "//div[@class='container__heading']/div[3]/div[1]/a"
 XPATH_NO_FOUND_MATCH = "//*[@id='no-match-found']"
 XPATH_SHOW_MORE_RESULTS = "//*[@id='live-table']/div[1]/div/div/a"

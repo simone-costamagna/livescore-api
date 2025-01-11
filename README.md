@@ -39,7 +39,7 @@ livescore-api
 ├── tests
 │   ├── main.py
 ├── logger
-├── .env
+├── config.py
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
@@ -49,14 +49,14 @@ livescore-api
 - **`app/routers`**: Contains API endpoints for different scraping functionalities.
 - **`app/services/models`**: Contains schemas for validation and utility functions for data processing.
 - **`app/services/scraper`**: Core logic for scraping the livescore football page and individual match data.
-- **`.env`**: Environment variables for configuration.
+- **`config.py`**: Variables for configuration.
 - **`logger`**: Custom logging configurations for monitoring application behavior.
 - **`tests`**: Contains test cases to validate the scraping logic and API functionality.
 
 ---
 
-## Environment Variables
-The project uses an `.env` file to manage configuration. Below are the available variables:
+## Configuration Variables
+The project uses an `config.py` file to manage configuration. Below are the available variables:
 
 ```plaintext
 DEBUG=False
@@ -73,8 +73,8 @@ SIMULATE_WAITING_HUMAN_BEING=10
 - **`DEBUG`**: Toggle debug mode (default: `False`).
 - **`URL_LIVESPORT`**: Base URL for scraping football scores.
 - **`URL_LIVESPORT_MATCH`**: URL template for scraping match-specific statistics.
-- **`TIMEOUT`**: Timeout in seconds for each request.
-- **`LIMIT`**: Maximum number of items to scrape in a single run.
+- **`TIMEOUT`**: Timeout in seconds for each request on Livesport.
+- **`LIMIT`**: Maximum number of click on 'show-more' buttons on Livesport.
 - **`RATE_LIMITING_FREQUENCY`**: Limits the number of requests per minute (e.g., `2/1minute` allows 2 requests per minute).
 - **`RATE_LIMITING_ENABLE`**: Enables or disables rate limiting.
 - **`SIMULATE_WAITING_HUMAN_BEING`**: Simulates a human delay (in seconds) to mimic user behavior.

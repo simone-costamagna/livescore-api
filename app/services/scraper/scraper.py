@@ -8,11 +8,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
+from config import TIMEOUT, URL_LIVESPORT, SIMULATE_WAITING_HUMAN_BEING
+
 load_dotenv()
 
-URL_LIVESPORT = os.getenv("URL_LIVESPORT")
-TIMEOUT = int(os.getenv("TIMEOUT"))
-SIMULATE_WAITING_HUMAN_BEING = int(os.getenv("SIMULATE_WAITING_HUMAN_BEING"))
 XPATH_FOOTBALL_BUTTON = "/html/body/nav/div/div[1]/a[1]"
 
 class Scraper:
@@ -85,9 +84,6 @@ class Scraper:
         """
         logging.debug(f"Finding {xpath}")
 
-        # Simulate human-like behavior by adding a 5-second sleep
-        sleep(SIMULATE_WAITING_HUMAN_BEING)
-
         if element is None:
             self.wait_an_element(xpath, temporary=temporary)
             element = self.driver.find_element(By.XPATH, xpath)
@@ -111,9 +107,6 @@ class Scraper:
         """
         logging.debug(f"Finding elements {xpath}")
 
-        # Simulate human-like behavior by adding a 5-second sleep
-        sleep(SIMULATE_WAITING_HUMAN_BEING)
-
         if element is None:
             self.wait_an_element(f"{xpath}[1]")
             elements = self.driver.find_elements(By.XPATH, xpath)
@@ -132,6 +125,10 @@ class Scraper:
             script (str, optional): The JavaScript action to execute. Defaults to 'click'.
         """
         logging.debug(f"Executing {script}")
+
+        # Simulate human-like behavior by adding a 5-second sleep
+        sleep(SIMULATE_WAITING_HUMAN_BEING)
+
         if script == 'click':
             self.driver.execute_script("arguments[0].click();", element)
             logging.debug(f"Element {script} executed")
