@@ -1,16 +1,11 @@
 import logging
-import os
-from dotenv import load_dotenv
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from app.services.utils import get_driver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
-
 from config import TIMEOUT, URL_LIVESPORT, SIMULATE_WAITING_HUMAN_BEING
-
-load_dotenv()
 
 XPATH_FOOTBALL_BUTTON = "/html/body/nav/div/div[1]/a[1]"
 

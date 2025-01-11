@@ -51,9 +51,9 @@ class LeagueScraper(Scraper):
         logging.debug(f"Reaching league URL: {url}")
         self.get_page(url)
 
-        league = League(country=country, league=league_name, url=url)
+        league = League(country=country, name=league_name, url=url)
 
-        return league if league.validate() else None
+        return league
 
     def scrape_league_archives(self, league_id: str) -> list[Archive]:
         """
@@ -86,11 +86,11 @@ class LeagueScraper(Scraper):
             archive_season = re.search(r"\b(\d{4}/\d{4})\b", archive_season_element.text.strip()).group(1).replace("/", "_")
             try:
                 archive_winner = self.find_element(XPATH_ARCHIVE_WINNER, element=archive_element)
+                archive = Archive(league=league_id, season=archive_season, url=self.get_attribute(archive_season_element), winner=archive_winner)
             except Exception as ex:
-                archive_winner = None
+                archive = Archive(league=league_id, season=archive_season, url=self.get_attribute(archive_season_element))
                 logging.debug(f"Archive {archive_season} of league {league_id} doesn't have a winner")
 
-            archive = Archive(league=league_id, season=archive_season, url=self.get_attribute(archive_season_element), winner= archive_winner)
             archives.append(archive)
 
         return archives

@@ -2,13 +2,9 @@ import logging
 import re
 from app.services.models.match_schemas import Match
 from app.services.scraper.scraper import Scraper
-import os
-from dotenv import load_dotenv
 from app.services.utils import get_match_datetime
+from config import URL_LIVESPORT_MATCH
 
-load_dotenv()
-
-URL_LIVESPORT_MATCH = os.getenv('URL_LIVESPORT_MATCH')
 XPATH_ROUND = '//*[@id="detail"]/div[3]/div/span[3]/a'
 XPATH_DATETIME = '//*[@id="detail"]/div[4]/div[1]/div'
 XPATH_HOME_TEAM = '//*[@id="detail"]/div[4]/div[2]/div[3]/div[2]/a'

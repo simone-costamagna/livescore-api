@@ -24,9 +24,6 @@ class Match(BaseModel):
     yellow_cards: Tuple[int, int] = Field(default=(None, None), description="The yellow cards of the match")
     red_cards: Tuple[int, int] = Field(default=(None, None), description="The red cards of the match")
 
-    def validate(self) -> bool:
-        return bool(self.match_date and self.round and self.home and self.away and self.home_score and self.away_score)
-
 
 class MatchResponse(BaseModel):
     match: Match

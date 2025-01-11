@@ -1,19 +1,11 @@
 import logging
 import re
-
-from anyio import sleep
-
 from app.services.models.archive_schemas import Archive, Match, Rank, LiveMatch
 from app.services.models.utils import Pagination
 from app.services.scraper.leagues_scraper import LeagueScraper
 from app.services.scraper.scraper import Scraper
 from app.services.utils import get_match_datetime
-import os
-from dotenv import load_dotenv
-
 from config import LIMIT
-
-load_dotenv()
 
 XPATH_TABS_MENU = "//div[@class='container__heading']/div[3]/div[1]/a"
 XPATH_NO_FOUND_MATCH = "//*[@id='no-match-found']"
@@ -101,7 +93,7 @@ class ArchiveScraper(Scraper):
                 if menu_text in MENU_MAPPING:
                     setattr(archive, MENU_MAPPING[menu_text], self.get_attribute(menu_element))
 
-            return archive if archive.validate() else None
+            return archive
         else:
             logging.debug(f"Invalid Archive ID: {archive_id}")
             return None

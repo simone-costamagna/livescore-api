@@ -44,9 +44,6 @@ class Archive(BaseModel):
             league = getattr(self, "league", "")
             super().__setattr__("id", f"{league}-{season}")
 
-    def validate(self) -> bool:
-        return bool(self.league and self.season and self.url and self.live and self.results and self.fixtures and self.standings)
-
 
 class Rank(BaseModel):
     position: int = Field(..., description="The position of the team in the standings")

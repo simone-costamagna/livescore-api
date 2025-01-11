@@ -19,7 +19,7 @@ class Archive(BaseModel):
     league: str = Field(..., description="The unique identifier of the archive's league")
     season: str = Field(..., description="The season associated with the archive")
     url: str = Field(..., description="The URL related to the archive")
-    winner: str = Field(..., description="The winner of the archive's season")
+    winner: str = Field(None, description="The winner of the archive's season")
 
     def __init__(self, /, **data: Any):
         super().__init__(**data)
