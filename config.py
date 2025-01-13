@@ -1,4 +1,4 @@
-DEBUG=False
+DEBUG=True
 URL_LIVESPORT="https://www.livescore.in/football/"
 URL_LIVESPORT_MATCH='https://www.livescore.in/match/{MATCH_ID}/#/match-summary/match-statistics/0'
 TIMEOUT=30

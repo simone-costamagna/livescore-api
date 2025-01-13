@@ -7,7 +7,7 @@ from slowapi.middleware import SlowAPIMiddleware
 from slowapi.errors import RateLimitExceeded
 from starlette.responses import RedirectResponse
 from app.routers import country, league, archive, match
-from logger.config import configure_logging
+from logger.logger_config import configure_logging
 import os
 
 load_dotenv()
